@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Send, CheckCircle2 } from "lucide-react";
+import { base44 } from "@/api/base44Client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -30,10 +31,38 @@ export default function ContactSection() {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In production this would submit to a backend
-    setSubmitted(true);
+    
+    try {
+      const emailBody = `
+New Contact Form Submission - Alicorn AI
+
+Name: ${form.name}
+Email: ${form.email}
+Company: ${form.company}
+Role: ${form.role}
+Team Size: ${form.team_size}
+Primary Concern: ${form.concern}
+
+Message:
+${form.message}
+
+---
+Submitted: ${new Date().toISOString()}
+      `;
+
+      await base44.integrations.Core.SendEmail({
+        to: "info@theproductunicorn.com",
+        subject: `Alicorn AI Contact: ${form.company} - ${form.name}`,
+        body: emailBody,
+      });
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      alert("Failed to send message. Please try again or email us directly at info@theproductunicorn.com");
+    }
   };
 
   if (submitted) {
