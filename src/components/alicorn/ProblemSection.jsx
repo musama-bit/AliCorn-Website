@@ -6,7 +6,7 @@ const PROBLEMS = [
   { icon: AlertTriangle, text: "Employees use public AI tools anyway (shadow AI)." },
   { icon: Eye, text: "Legal and security teams worry about sensitive information leaving the company." },
   { icon: FileQuestion, text: "Public AI is hard to govern. No clear audit trail." },
-  { icon: Link2, text: "One-off tools don't connect to your SOPs and internal knowledge." },
+  { icon: Link2, text: "AI governance teams block third-party tools from accessing internal knowledge, leaving solutions disconnected from your SOPs." },
   { icon: TrendingUp, text: "Costs become unpredictable as usage grows." },
 ];
 
