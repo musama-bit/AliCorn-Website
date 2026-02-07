@@ -75,15 +75,7 @@ export default function ContactSection() {
               If AI is blocked internally or you're worried about shadow AI, we'll help you evaluate the safest path forward.
             </p>
 
-            <div className="mt-10 space-y-4">
-              <a
-                href="mailto:hello@alicornai.com"
-                className="inline-flex items-center gap-3 text-white/40 hover:text-[#4B9CD3] transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                <span className="text-[15px]">hello@alicornai.com</span>
-              </a>
-            </div>
+
           </motion.div>
 
           {/* Right side - form */}
