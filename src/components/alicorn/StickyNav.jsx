@@ -40,13 +40,12 @@ export default function StickyNav() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16 md:h-[72px]">
         {/* Logo */}
         <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-          className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-[#4B9CD3] flex items-center justify-center">
-            <span className="text-white font-bold text-sm">A</span>
-          </div>
-          <span className={`font-semibold text-lg tracking-tight transition-colors ${scrolled ? "text-[#0B0B0B]" : "text-[#0B0B0B]"}`}>
-            Alicorn AI
-          </span>
+          className="flex items-center group">
+          <img 
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6987bf0f7f2976d049a2adb1/ddc3705c6_A2640A5F-7745-4900-96FA-3726CE1067D7.png" 
+            alt="Alicorn AI" 
+            className="h-10 w-auto"
+          />
         </a>
 
         {/* Desktop links */}
