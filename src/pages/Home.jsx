@@ -7,7 +7,7 @@ import HowItWorksSection from "@/components/alicorn/HowItWorksSection";
 import ValueSection from "@/components/alicorn/ValueSection";
 import UseCasesSection from "@/components/alicorn/UseCasesSection";
 import SecuritySection from "@/components/alicorn/SecuritySection";
-import PricingSection from "@/components/alicorn/PricingSection";
+
 import FAQSection from "@/components/alicorn/FAQSection";
 import ContactSection from "@/components/alicorn/ContactSection";
 import Footer from "@/components/alicorn/Footer";
@@ -36,7 +36,6 @@ export default function Home() {
       <ValueSection />
       <UseCasesSection />
       <SecuritySection />
-      <PricingSection />
       <FAQSection />
       <ContactSection />
       <Footer />
