@@ -35,7 +35,7 @@ export default function HeroSection() {
 
           {/* Headline */}
           <h1 className="text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[1.08] font-bold tracking-[-0.035em] text-[#0B0B0B]">
-            Ship internal AI without<br className="hidden sm:block" /> creating shadow AI risk.
+            Build and Deploy internal AI without<br className="hidden sm:block" /> creating shadow AI risk.
           </h1>
 
           {/* Subheadline */}
