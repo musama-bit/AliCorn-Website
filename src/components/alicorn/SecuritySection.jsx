@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { Shield, UserCheck, ClipboardList, Database, FileCheck, Users } from "lucide-react";
 
 const ITEMS = [
-  { icon: Shield, text: "Client environments are isolated" },
+  { icon: Database, text: "Data stays in your environment (no training on your data by default)" },
   { icon: UserCheck, text: "Access controls by role" },
   { icon: ClipboardList, text: "Audit logs available" },
-  { icon: Database, text: "Data stays in your environment (no training on your data by default)" },
-  { icon: FileCheck, text: "Document-based grounding and refusal behavior" },
+  { icon: Shield, text: "Client environments isolated" },
+  { icon: FileCheck, text: "Document-based grounding + refusal behavior" },
   { icon: Users, text: "Human escalation paths for edge cases" },
 ];
 
@@ -53,15 +53,32 @@ export default function SecuritySection() {
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="mt-10 text-[13px] text-[#0B0B0B]/40 italic"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-10 md:mt-12"
         >
-          Specific controls vary by deployment (our cloud, your cloud, or on-prem). We'll align with your policies.
-        </motion.p>
+          <p className="text-base md:text-lg leading-relaxed text-[#0B0B0B]/60 max-w-2xl mb-6">
+            Deployment-specific controls and policy alignment are configured during setup.
+          </p>
+          <button
+            onClick={() => {
+              const el = document.querySelector("#contact");
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+                setTimeout(() => {
+                  const concernSelect = document.querySelector('[name="concern"]');
+                  if (concernSelect) concernSelect.focus();
+                }, 500);
+              }
+            }}
+            className="inline-flex items-center gap-2 px-5 py-3 bg-white border-2 border-[#4B9CD3]/20 text-[#4B9CD3] font-semibold text-sm rounded-lg hover:bg-[#4B9CD3]/5 transition-all"
+          >
+            Request the security overview (1 page)
+          </button>
+        </motion.div>
       </div>
     </section>
   );

@@ -5,23 +5,23 @@ import { Lock, FileCheck, ShieldCheck, Headphones } from "lucide-react";
 const FEATURES = [
   {
     icon: Lock,
-    title: "Private workspace (isolated environment)",
-    desc: "Your environment is separated from other clients.",
+    title: "Isolated private workspace",
+    desc: "Client environments are isolated by design. Your deployment is separated from other customers.",
   },
   {
     icon: FileCheck,
-    title: "Grounded answers with sources",
-    desc: "Responses can cite your documents so people can verify.",
+    title: "Grounded answers with citations",
+    desc: "Responses reference your internal policies and SOPs so users can verify sources.",
   },
   {
     icon: ShieldCheck,
-    title: "Guardrails + role-based access",
-    desc: "Clear boundaries for what AI can and cannot do.",
+    title: "Governance guardrails + role-based access",
+    desc: "Clear boundaries for what AI can do, who can do it, and what data it can touch.",
   },
   {
     icon: Headphones,
     title: "Managed operations",
-    desc: "Monitoring, updates, and support so your team isn't stuck maintaining it.",
+    desc: "We monitor quality, maintain the system, and support rollout so IT isn't stuck owning a new platform.",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function SolutionSection() {
             The Alicorn AI solution
           </h2>
           <p className="mt-6 text-base md:text-lg leading-relaxed text-[#0B0B0B]/60 max-w-3xl">
-            We set up a private AI workspace for your company and run it for you. It's designed for internal Q&A, SOP guidance, drafting, and agent workflows — with guardrails and logging from day one.
+            We stand up a private, governed AI workspace and run it for you. The product is control: role-based access, logging, grounded answers from your documents, and guardrails that prevent risky behavior—so AI becomes deployable, auditable, and supportable.
           </p>
         </motion.div>
 
