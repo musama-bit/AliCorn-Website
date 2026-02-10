@@ -35,17 +35,17 @@ export default function HeroSection() {
 
           {/* Headline */}
           <h1 className="text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[1.08] font-bold tracking-[-0.035em] text-[#0B0B0B]">
-            Private AI your team<br className="hidden sm:block" /> is allowed to use.
+            Ship internal AI without<br className="hidden sm:block" /> creating shadow AI risk.
           </h1>
 
           {/* Subheadline */}
           <p className="mt-6 text-lg sm:text-xl leading-relaxed text-[#0B0B0B]/60 max-w-2xl">
-            Alicorn AI deploys and manages a secure, private AI workspace so your company can use AI with confidence — without exposing sensitive data.
+            Alicorn AI deploys and operates a secure, governed AI workspace so your teams can use AI safely—inside your environment, with access controls, audit logs, and predictable costs.
           </p>
 
           {/* Trust statement */}
           <p className="mt-4 text-sm font-medium text-[#0B0B0B]/45 tracking-wide uppercase">
-            Built for mid-market companies that need control, auditability, and predictable costs.
+            Built for IT, Security, and Legal review. Designed to unblock the business without losing control.
           </p>
 
           {/* CTAs */}
@@ -66,9 +66,17 @@ export default function HeroSection() {
             </button>
           </div>
 
+          {/* Forward link */}
+          <button
+            onClick={() => scrollTo("#security")}
+            className="mt-4 text-[13px] text-[#4B9CD3] font-medium hover:text-[#3a8bc2] transition-colors"
+          >
+            Forward to Security/Legal →
+          </button>
+
           {/* Note */}
-          <p className="mt-5 text-[13px] text-[#0B0B0B]/40">
-            No obligation. We'll tell you quickly if this is not a fit.
+          <p className="mt-4 text-[13px] text-[#0B0B0B]/40">
+            No obligation. We'll quickly tell you if this isn't a fit.
           </p>
         </motion.div>
       </div>

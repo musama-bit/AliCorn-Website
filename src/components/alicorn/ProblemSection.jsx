@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { AlertTriangle, Eye, FileQuestion, Link2, TrendingUp } from "lucide-react";
 
 const PROBLEMS = [
-  { icon: AlertTriangle, text: "Employees use public AI tools anyway (shadow AI)." },
-  { icon: Eye, text: "Legal and security teams worry about sensitive information leaving the company." },
-  { icon: FileQuestion, text: "Public AI is hard to govern. No clear audit trail." },
-  { icon: Link2, text: "AI governance teams block third-party tools from accessing internal knowledge, leaving solutions disconnected from your SOPs." },
-  { icon: TrendingUp, text: "Costs become unpredictable as usage grows." },
+  { icon: AlertTriangle, text: "Shadow AI is already happening (unapproved tools + copy/paste data)." },
+  { icon: Eye, text: "Security and Legal block public LLMs to reduce exposure—but the business routes around it." },
+  { icon: FileQuestion, text: "Without governance, you can't answer: who used AI, on what data, and for what outcome." },
+  { icon: Link2, text: "Most 'AI tools' can't access internal SOPs safely, so answers drift and trust collapses." },
+  { icon: TrendingUp, text: "Costs become unpredictable as usage spreads across seats and vendors." },
 ];
 
 export default function ProblemSection() {
@@ -22,7 +22,7 @@ export default function ProblemSection() {
         >
           <p className="text-[13px] font-semibold tracking-widest uppercase text-[#4B9CD3] mb-4">The problem</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight text-[#0B0B0B] leading-tight">
-            Why internal AI gets stuck
+            Why internal AI stalls (and why doing nothing gets riskier)
           </h2>
         </motion.div>
 
@@ -53,8 +53,20 @@ export default function ProblemSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 md:mt-12 text-base md:text-lg leading-relaxed text-[#0B0B0B]/60 max-w-2xl"
         >
-          Most teams don't have the time or staff to build a secure internal AI platform. So AI stays blocked, fragmented, or risky.
+          Blocking AI doesn't stop AI usage. It pushes it into unmanaged channels. The result is policy drift, audit exposure, and growing friction between IT and the business.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-8 p-6 md:p-7 bg-[#0B0B0B] rounded-2xl border border-[#0B0B0B]"
+        >
+          <p className="text-base md:text-lg leading-relaxed text-white font-medium">
+            The real risk isn't adopting AI. It's adopting AI without controls.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

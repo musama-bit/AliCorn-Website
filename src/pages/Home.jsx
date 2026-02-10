@@ -14,15 +14,37 @@ import Footer from "@/components/alicorn/Footer";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Alicorn AI | Private AI Your Team Is Allowed to Use";
+    document.title = "Alicorn AI | Governed Private AI Workspace for IT, Security & Legal";
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
-      meta.setAttribute("content", "Alicorn AI deploys and manages private, governed AI workspaces so mid-market teams can use AI safely with predictable costs.");
+      meta.setAttribute("content", "Deploy a secure, private AI workspace with role-based access, audit logs, and grounded answers from your SOPs. Built for mid-market IT, Security, and Legal.");
     } else {
       const newMeta = document.createElement("meta");
       newMeta.name = "description";
-      newMeta.content = "Alicorn AI deploys and manages private, governed AI workspaces so mid-market teams can use AI safely with predictable costs.";
+      newMeta.content = "Deploy a secure, private AI workspace with role-based access, audit logs, and grounded answers from your SOPs. Built for mid-market IT, Security, and Legal.";
       document.head.appendChild(newMeta);
+    }
+
+    // Open Graph tags for sharing
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    
+    if (ogTitle) {
+      ogTitle.setAttribute("content", "Alicorn AI | Governed Private AI Workspace");
+    } else {
+      const newOgTitle = document.createElement("meta");
+      newOgTitle.setAttribute("property", "og:title");
+      newOgTitle.content = "Alicorn AI | Governed Private AI Workspace";
+      document.head.appendChild(newOgTitle);
+    }
+
+    if (ogDescription) {
+      ogDescription.setAttribute("content", "Deploy a secure, private AI workspace with role-based access, audit logs, and grounded answers from your SOPs.");
+    } else {
+      const newOgDescription = document.createElement("meta");
+      newOgDescription.setAttribute("property", "og:description");
+      newOgDescription.content = "Deploy a secure, private AI workspace with role-based access, audit logs, and grounded answers from your SOPs.";
+      document.head.appendChild(newOgDescription);
     }
   }, []);
 
@@ -37,6 +59,7 @@ export default function Home() {
       <UseCasesSection />
       <SecuritySection />
       <FAQSection />
+      <ROISection />
       <ContactSection />
       <Footer />
     </div>

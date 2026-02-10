@@ -62,6 +62,38 @@ export default function SolutionSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-16 p-6 md:p-8 bg-white rounded-2xl border border-black/[0.04]"
+        >
+          <h3 className="text-xl font-semibold text-[#0B0B0B] mb-4">
+            Why teams use Alicorn AI alongside enterprise copilots
+          </h3>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#4B9CD3] mt-2 flex-shrink-0" />
+              <span className="text-[15px] leading-relaxed text-[#0B0B0B]/60">
+                Alicorn is the governed workspace for internal knowledge + workflows.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#4B9CD3] mt-2 flex-shrink-0" />
+              <span className="text-[15px] leading-relaxed text-[#0B0B0B]/60">
+                Copilots help with general productivity; governance still needs a home.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#4B9CD3] mt-2 flex-shrink-0" />
+              <span className="text-[15px] leading-relaxed text-[#0B0B0B]/60">
+                We focus on auditability, policy grounding, and operational control from day one.
+              </span>
+            </li>
+          </ul>
+        </motion.div>
       </div>
     </section>
   );

@@ -5,29 +5,29 @@ import { Zap, ShieldCheck, DollarSign } from "lucide-react";
 const COLUMNS = [
   {
     icon: Zap,
-    title: "Productivity",
+    title: "Faster execution",
     bullets: [
-      "Faster answers to process questions",
-      "Less time searching for SOPs and tribal knowledge",
+      "Quicker answers to process questions (SOP copilot)",
+      "Less time searching for policies and tribal knowledge",
       "Drafting and summarization that stays inside your environment",
     ],
   },
   {
     icon: ShieldCheck,
-    title: "Risk Reduction",
+    title: "Governed adoption",
     bullets: [
-      "Reduced shadow AI risk",
-      "Clear governance and access controls",
-      "Audit logs for internal review",
+      "Reduced shadow AI exposure",
+      "Clear access + approval boundaries",
+      "Audit logs for internal and compliance review",
     ],
   },
   {
     icon: DollarSign,
-    title: "Cost Control",
+    title: "Predictable cost + ownership",
     bullets: [
-      "Predictable monthly cost",
-      "Reduce reliance on per-seat sprawl across tools",
-      "Avoid surprise usage bills as adoption grows",
+      "Controlled deployment scope",
+      "Avoid per-seat sprawl across vendors",
+      "Operational support so IT isn't stuck maintaining it",
     ],
   },
 ];
@@ -44,7 +44,7 @@ export default function ValueSection() {
         >
           <p className="text-[13px] font-semibold tracking-widest uppercase text-[#4B9CD3] mb-4">Outcomes</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight text-[#0B0B0B] leading-tight">
-            What you get out of it
+            What changes after Alicorn is in place
           </h2>
         </motion.div>
 
@@ -79,10 +79,10 @@ export default function ValueSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 p-6 md:p-8 rounded-2xl bg-white border border-[#4B9CD3]/10"
+          className="mt-12 p-6 md:p-8 rounded-2xl bg-[#4B9CD3]/5 border border-[#4B9CD3]/15"
         >
-          <p className="text-base md:text-lg leading-relaxed text-[#0B0B0B]/60">
-            If your team saves even <span className="font-semibold text-[#0B0B0B]">15 minutes per day per employee</span> on repetitive knowledge work, the payback can be meaningful. We'll quantify this in the pilot.
+          <p className="text-base md:text-lg leading-relaxed text-[#0B0B0B] font-semibold">
+            Even small time savings compound. We quantify ROI during the pilot.
           </p>
         </motion.div>
       </div>

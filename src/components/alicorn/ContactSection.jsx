@@ -98,10 +98,10 @@ Submitted: ${new Date().toISOString()}
           >
             <p className="text-[13px] font-semibold tracking-widest uppercase text-[#4B9CD3] mb-4">Contact</p>
             <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight text-white leading-tight">
-              Want to see if this fits?
+              De-risk internal AI in 20 minutes.
             </h2>
             <p className="mt-6 text-base md:text-lg leading-relaxed text-white/50 max-w-md">
-              If AI is blocked internally or you're worried about shadow AI, we'll help you evaluate the safest path forward.
+              If AI is blocked internally—or shadow AI is already happening—we'll help you evaluate the safest path forward and outline a pilot that your Security and Legal teams can support.
             </p>
 
 
@@ -205,6 +205,10 @@ Submitted: ${new Date().toISOString()}
                 Book a 20-minute fit call
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
+
+              <p className="mt-4 text-sm text-white/40">
+                Best next step: we'll confirm fit, identify 2–3 pilot workflows, and outline security review steps.
+              </p>
             </form>
           </motion.div>
         </div>

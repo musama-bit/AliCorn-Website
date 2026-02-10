@@ -28,6 +28,14 @@ const FAQS = [
     a: "We use document-based grounding (answers cite sources), guardrails for topic boundaries, and refusal behavior when the system doesn't have enough information. Human escalation paths are built in.",
   },
   {
+    q: "What happens if the AI is uncertain or can't find a source?",
+    a: "It refuses, asks clarifying questions, or routes to a human path—based on your configured policy.",
+  },
+  {
+    q: "How do you help us govern usage internally?",
+    a: "We implement role-based access, logging, and guardrails, and we provide rollout guidance so usage grows safely.",
+  },
+  {
     q: "How fast can we launch?",
     a: "Most pilots go live within 2–4 weeks depending on the complexity of your use cases and data readiness.",
   },

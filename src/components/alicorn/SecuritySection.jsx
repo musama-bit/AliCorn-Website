@@ -25,6 +25,14 @@ export default function SecuritySection() {
           <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight text-[#0B0B0B] leading-tight">
             Security and governance by design
           </h2>
+          <div className="mt-6 p-5 bg-[#4B9CD3]/5 rounded-xl border border-[#4B9CD3]/15">
+            <p className="text-sm font-semibold text-[#0B0B0B]/70 mb-2">
+              Forward this section to your Security and Legal teams.
+            </p>
+            <p className="text-[15px] leading-relaxed text-[#0B0B0B]/60">
+              Alicorn is built to support internal review. We align to your policies and deployment requirements (our cloud, your cloud, or on-prem).
+            </p>
+          </div>
         </motion.div>
 
         <div className="mt-14 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
