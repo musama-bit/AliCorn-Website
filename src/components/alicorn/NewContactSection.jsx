@@ -83,7 +83,7 @@ Submitted: ${new Date().toISOString()}
             Leverage AI safely.
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            If AI is blocked internally, or already being used without oversight, the next step is clarity — not more delay.
+            If AI is blocked internally, or already being used without oversight, contact us to map out your custom implementation plan.
           </p>
         </motion.div>
 
