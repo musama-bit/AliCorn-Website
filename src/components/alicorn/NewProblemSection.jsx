@@ -21,7 +21,6 @@ export default function NewProblemSection() {
             <p>Some teams are using public tools.</p>
             <p>Some teams are blocked entirely.</p>
             <p>IT is caught in the middle.</p>
-            <p className="font-semibold text-[#0B0B0B]">Doing nothing increases risk.</p>
           </div>
 
           {/* Bullet list */}
@@ -49,9 +48,9 @@ export default function NewProblemSection() {
 
           {/* Closing statement */}
           <div className="p-8 bg-[#0B0B0B] rounded-2xl">
-            <p className="text-2xl font-bold text-white leading-tight">
-              The risk isn't AI.<br />
-              <span className="text-[#FF6B35]">It's unmanaged AI.</span>
+            <p className="text-2xl font-bold leading-tight">
+              <span className="text-white">Doing nothing </span>
+              <span className="text-[#4B9CD3]">increases risk.</span>
             </p>
           </div>
         </motion.div>
