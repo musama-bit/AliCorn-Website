@@ -19,6 +19,7 @@ export default function PrivateAiRoiAssessment() {
 
   const [formData, setFormData] = useState({
     // Step 1
+    name: "",
     companyName: "",
     role: "",
     revenue: "",
@@ -56,6 +57,11 @@ export default function PrivateAiRoiAssessment() {
   const updateField = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
+
+  // Scroll to top when step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentStep]);
 
   // Calculate Risk Score
   const calculateRiskScore = () => {
@@ -113,10 +119,10 @@ export default function PrivateAiRoiAssessment() {
 Alicorn AI Readiness Assessment - Results
 
 CONTACT INFORMATION
-Name: ${formData.leadName}
+Name: ${formData.name}
 Email: ${formData.leadEmail}
-Company: ${formData.leadCompany}
-Role: ${formData.leadRole}
+Company: ${formData.companyName}
+Role: ${formData.role}
 Wants Call: ${formData.wantsCall ? "Yes" : "No"}
 
 ORGANIZATION PROFILE
@@ -165,13 +171,13 @@ Submitted: ${new Date().toISOString()}
       // Send to sales team
       await base44.integrations.Core.SendEmail({
         to: "info@theproductunicorn.com",
-        subject: `AI Assessment Lead: ${formData.leadCompany} - ${formData.leadName} [${riskScore} risk, $${roi.recovery.toLocaleString()} ROI]`,
+        subject: `AI Assessment Lead: ${formData.companyName} - ${formData.name} [${riskScore} risk, $${roi.recovery.toLocaleString()} ROI]`,
         body: emailBody,
       });
 
       // Send to lead
       const leadEmailBody = `
-Hello ${formData.leadName.split(' ')[0]},
+Hello ${formData.name.split(' ')[0]},
 
 Thank you for completing the Alicorn AI Readiness Assessment.
 
@@ -218,7 +224,7 @@ Alicorn AI Team
 
   const canContinue = () => {
     if (currentStep === 1) {
-      return formData.companyName && formData.role && formData.revenue && formData.employees && formData.industry && formData.primaryConcerns.length > 0;
+      return formData.name && formData.companyName && formData.role && formData.revenue && formData.employees && formData.industry && formData.primaryConcerns.length > 0;
     }
     if (currentStep === 2) {
       return formData.aiUsage && formData.aiApproval && formData.aiLogging && formData.dataType;
@@ -401,6 +407,15 @@ Alicorn AI Team
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold text-[#0B0B0B] mb-6">About Your Organization</h2>
                 
+                <div>
+                  <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Your Name</label>
+                  <Input
+                    value={formData.name}
+                    onChange={(e) => updateField("name", e.target.value)}
+                    className="h-12"
+                  />
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Company Name</label>
                   <Input
@@ -776,42 +791,12 @@ Alicorn AI Team
 
                 <form onSubmit={handleSubmitLead} className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Name</label>
-                    <Input
-                      required
-                      value={formData.leadName}
-                      onChange={(e) => updateField("leadName", e.target.value)}
-                      className="h-12"
-                    />
-                  </div>
-
-                  <div>
                     <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Work Email</label>
                     <Input
                       required
                       type="email"
                       value={formData.leadEmail}
                       onChange={(e) => updateField("leadEmail", e.target.value)}
-                      className="h-12"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Company</label>
-                    <Input
-                      required
-                      value={formData.leadCompany}
-                      onChange={(e) => updateField("leadCompany", e.target.value)}
-                      className="h-12"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Role</label>
-                    <Input
-                      required
-                      value={formData.leadRole}
-                      onChange={(e) => updateField("leadRole", e.target.value)}
                       className="h-12"
                     />
                   </div>
