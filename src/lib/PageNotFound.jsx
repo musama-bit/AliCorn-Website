@@ -1,7 +1,7 @@
 import { useLocation, Link } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
-import { createPageUrl } from './utils';
+import { createPageUrl } from '@/utils';
 
 
 export default function PageNotFound({}) {
@@ -15,7 +15,7 @@ export default function PageNotFound({}) {
                 const user = await base44.auth.me();
                 return { user, isAuthenticated: true };
             } catch (error) {
-                return { user: null, isAuthenticated: false };
+                return { user, null, isAuthenticated: false };
             }
         }
     });
