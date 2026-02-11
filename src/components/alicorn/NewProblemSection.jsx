@@ -13,7 +13,7 @@ export default function NewProblemSection() {
         >
           {/* Headline */}
           <h2 className="text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] font-bold tracking-[-0.03em] text-[#0B0B0B] mb-8">
-            AI is already inside<br className="hidden sm:block" /> your company.
+            Ungoverned AI use is spreading<br className="hidden sm:block" /> throughout your company
           </h2>
 
           {/* Supporting copy */}
