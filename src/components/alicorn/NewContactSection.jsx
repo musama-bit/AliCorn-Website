@@ -131,7 +131,7 @@ Submitted: ${new Date().toISOString()}
             <div className="text-center">
               <button
                 type="submit"
-                className="inline-flex items-center justify-center px-12 py-5 bg-[#FF6B35] text-white font-bold text-lg rounded-lg hover:bg-[#ff5722] transition-all hover:shadow-xl hover:shadow-[#FF6B35]/30 hover:scale-105"
+                className="inline-flex items-center justify-center px-12 py-5 bg-[#4B9CD3] text-white font-bold text-lg rounded-lg hover:bg-[#3a8bc2] transition-all hover:shadow-xl hover:shadow-[#4B9CD3]/30 hover:scale-105"
               >
                 Explore Now
               </button>

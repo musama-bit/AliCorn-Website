@@ -36,12 +36,12 @@ function FAQItem({ faq, isOpen, onToggle }) {
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 py-6 text-left group"
       >
-        <span className="text-lg font-semibold text-[#0B0B0B] group-hover:text-[#FF6B35] transition-colors">
+        <span className="text-lg font-semibold text-[#0B0B0B] group-hover:text-[#4B9CD3] transition-colors">
           {faq.q}
         </span>
         <ChevronDown
           className={`w-5 h-5 text-[#0B0B0B]/40 flex-shrink-0 transition-transform duration-300 ${
-            isOpen ? "rotate-180 text-[#FF6B35]" : ""
+            isOpen ? "rotate-180 text-[#4B9CD3]" : ""
           }`}
         />
       </button>

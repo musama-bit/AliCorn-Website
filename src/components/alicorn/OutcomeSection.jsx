@@ -60,7 +60,7 @@ export default function OutcomeSection() {
               <ul className="space-y-3">
                 {col.points.map((point, j) => (
                   <li key={j} className="flex items-start gap-3 text-[#0B0B0B]/70">
-                    <span className="text-[#FF6B35] font-bold mt-1">—</span>
+                    <span className="text-[#4B9CD3] font-bold mt-1">—</span>
                     <span className="text-lg">{point}</span>
                   </li>
                 ))}

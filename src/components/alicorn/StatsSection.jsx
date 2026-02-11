@@ -22,7 +22,7 @@ export default function StatsSection() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="text-center"
             >
-              <div className="text-5xl sm:text-6xl font-bold text-[#FF6B35] mb-3">
+              <div className="text-5xl sm:text-6xl font-bold text-[#4B9CD3] mb-3">
                 {stat.number}
               </div>
               <div className="text-lg text-[#0B0B0B]/70">{stat.label}</div>

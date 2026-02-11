@@ -10,7 +10,7 @@ export default function NewHowItWorksSection() {
   ];
 
   return (
-    <section className="py-32 bg-gradient-to-br from-[#FF6B35] to-[#ff8555]">
+    <section className="py-32 bg-gradient-to-br from-[#4B9CD3] to-[#5aabdb]">
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -33,7 +33,7 @@ export default function NewHowItWorksSection() {
                 className="flex items-start gap-6 bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20"
               >
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                  <span className="text-2xl font-bold text-[#FF6B35]">{i + 1}</span>
+                  <span className="text-2xl font-bold text-[#4B9CD3]">{i + 1}</span>
                 </div>
                 <p className="text-xl text-white pt-2">{step}</p>
               </motion.div>

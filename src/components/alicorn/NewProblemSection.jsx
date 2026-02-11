@@ -40,7 +40,7 @@ export default function NewProblemSection() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex items-center gap-3 text-lg text-[#0B0B0B]/80"
               >
-                <div className="w-2 h-2 rounded-full bg-[#FF6B35] flex-shrink-0" />
+                <div className="w-2 h-2 rounded-full bg-[#4B9CD3] flex-shrink-0" />
                 <span>{item}</span>
               </motion.div>
             ))}

@@ -20,7 +20,7 @@ export default function NewHeroSection() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[#FF6B35]/20 to-[#4B9CD3]/20 blur-[120px] pointer-events-none"
+        className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[#4B9CD3]/20 to-[#4B9CD3]/30 blur-[120px] pointer-events-none"
       />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-8 text-center">
@@ -32,7 +32,7 @@ export default function NewHeroSection() {
           {/* Main headline */}
           <h1 className="text-[clamp(3rem,7vw,5.5rem)] leading-[1.05] font-bold tracking-[-0.04em] text-[#0B0B0B] mb-8">
             Let your company use AI,<br />
-            <span className="text-[#FF6B35]">without losing control.</span>
+            <span className="text-[#4B9CD3]">without losing control.</span>
           </h1>
 
           {/* Subheadline */}
@@ -48,7 +48,7 @@ export default function NewHeroSection() {
           {/* Primary CTA */}
           <button
             onClick={() => scrollTo("#contact")}
-            className="inline-flex items-center justify-center px-10 py-5 bg-[#FF6B35] text-white font-bold text-lg rounded-lg hover:bg-[#ff5722] transition-all hover:shadow-xl hover:shadow-[#FF6B35]/30 hover:scale-105"
+            className="inline-flex items-center justify-center px-10 py-5 bg-[#4B9CD3] text-white font-bold text-lg rounded-lg hover:bg-[#3a8bc2] transition-all hover:shadow-xl hover:shadow-[#4B9CD3]/30 hover:scale-105"
           >
             Calculate Your ROI
           </button>
