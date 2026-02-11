@@ -13,7 +13,7 @@ const FAQS = [
   },
   {
     q: "What if the AI is uncertain?",
-    a: "It refuses to answer, asks clarifying questions, or routes to a human based on configured policies.",
+    a: "It refuses to answer, asks clarifying questions, or routes to a human. Based on configured policies.",
   },
   {
     q: "Can we control who has access?",
