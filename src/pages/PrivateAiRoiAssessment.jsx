@@ -24,7 +24,7 @@ export default function PrivateAiRoiAssessment() {
     revenue: "",
     employees: "",
     industry: "",
-    primaryConcern: "",
+    primaryConcerns: [],
     
     // Step 2
     aiUsage: "",
@@ -124,7 +124,7 @@ Company: ${formData.companyName}
 Revenue: ${formData.revenue}
 Employees: ${formData.employees}
 Industry: ${formData.industry}
-Primary Concern: ${formData.primaryConcern}
+Primary Concerns: ${formData.primaryConcerns.join(", ")}
 
 ASSESSMENT RESULTS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -218,7 +218,7 @@ Alicorn AI Team
 
   const canContinue = () => {
     if (currentStep === 1) {
-      return formData.companyName && formData.role && formData.revenue && formData.employees && formData.industry && formData.primaryConcern;
+      return formData.companyName && formData.role && formData.revenue && formData.employees && formData.industry && formData.primaryConcerns.length > 0;
     }
     if (currentStep === 2) {
       return formData.aiUsage && formData.aiApproval && formData.aiLogging && formData.dataType;
@@ -436,6 +436,7 @@ Alicorn AI Team
                     className="w-full h-12 px-3 border border-[#0B0B0B]/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B9CD3]/50"
                   >
                     <option value="">Select range...</option>
+                    <option value="< $10M">{"< $10M"}</option>
                     <option value="$10–20M">$10–20M</option>
                     <option value="$20–50M">$20–50M</option>
                     <option value="$50–100M">$50–100M</option>
@@ -452,6 +453,7 @@ Alicorn AI Team
                     className="w-full h-12 px-3 border border-[#0B0B0B]/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B9CD3]/50"
                   >
                     <option value="">Select range...</option>
+                    <option value="< 50">{"< 50"}</option>
                     <option value="50–100">50–100</option>
                     <option value="100–250">100–250</option>
                     <option value="250–500">250–500</option>
@@ -470,20 +472,26 @@ Alicorn AI Team
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Primary Concern</label>
-                  <select
-                    value={formData.primaryConcern}
-                    onChange={(e) => updateField("primaryConcern", e.target.value)}
-                    className="w-full h-12 px-3 border border-[#0B0B0B]/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4B9CD3]/50"
-                  >
-                    <option value="">Select concern...</option>
-                    <option value="Security/Compliance">Security/Compliance</option>
-                    <option value="Shadow AI">Shadow AI</option>
-                    <option value="Productivity">Productivity</option>
-                    <option value="Cost Control">Cost Control</option>
-                    <option value="Governance">Governance</option>
-                    <option value="Executive Pressure">Executive Pressure</option>
-                  </select>
+                  <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-3">Primary Concerns</label>
+                  <div className="space-y-2">
+                    {["Security/Compliance", "Shadow AI", "Productivity", "Cost Control", "Governance", "Executive Pressure"].map((concern) => (
+                      <label key={concern} className="flex items-center gap-3 p-4 border border-[#0B0B0B]/10 rounded-lg hover:border-[#4B9CD3]/30 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.primaryConcerns.includes(concern)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              updateField("primaryConcerns", [...formData.primaryConcerns, concern]);
+                            } else {
+                              updateField("primaryConcerns", formData.primaryConcerns.filter(c => c !== concern));
+                            }
+                          }}
+                          className="w-4 h-4 text-[#4B9CD3]"
+                        />
+                        <span className="text-[#0B0B0B]/80">{concern}</span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
