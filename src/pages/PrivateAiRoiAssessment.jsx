@@ -114,6 +114,10 @@ export default function PrivateAiRoiAssessment() {
     const governanceScore = calculateGovernanceScore();
     const roi = calculateROI();
     
+    // Show results immediately
+    setSubmitted(true);
+    
+    // Send emails in background
     try {
       const emailBody = `
 Alicorn AI Readiness Assessment - Results
@@ -211,11 +215,9 @@ Alicorn AI Team
         subject: `Your Alicorn AI Readiness Report`,
         body: leadEmailBody,
       });
-
-      setSubmitted(true);
     } catch (error) {
-      console.error("Failed to send:", error);
-      alert("Failed to send. Please try again.");
+      console.error("Email send failed:", error);
+      // Results are still shown, just email failed silently
     }
   };
 
