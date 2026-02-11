@@ -46,12 +46,12 @@ export default function NewHeroSection() {
           </p>
 
           {/* Primary CTA */}
-          <button
-            onClick={() => scrollTo("#contact")}
+          <a
+            href="https://www.alicornai.com/PrivateAiRoiAssessment"
             className="inline-flex items-center justify-center px-10 py-5 bg-[#4B9CD3] text-white font-bold text-lg rounded-lg hover:bg-[#3a8bc2] transition-all hover:shadow-xl hover:shadow-[#4B9CD3]/30 hover:scale-105"
           >
             Calculate Your ROI
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>
