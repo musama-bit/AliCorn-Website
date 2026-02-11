@@ -19,7 +19,6 @@ export default function PrivateAiRoiAssessment() {
 
   const [formData, setFormData] = useState({
     // Step 1
-    name: "",
     companyName: "",
     role: "",
     revenue: "",
@@ -47,10 +46,9 @@ export default function PrivateAiRoiAssessment() {
     executivePressure: "",
     
     // Lead capture
-    leadName: "",
+    firstName: "",
+    lastName: "",
     leadEmail: "",
-    leadCompany: "",
-    leadRole: "",
     wantsCall: false,
   });
 
@@ -123,7 +121,7 @@ export default function PrivateAiRoiAssessment() {
 Alicorn AI Readiness Assessment - Results
 
 CONTACT INFORMATION
-Name: ${formData.name}
+Name: ${formData.firstName} ${formData.lastName}
 Email: ${formData.leadEmail}
 Company: ${formData.companyName}
 Role: ${formData.role}
@@ -175,13 +173,13 @@ Submitted: ${new Date().toISOString()}
       // Send to sales team
       await base44.integrations.Core.SendEmail({
         to: "info@theproductunicorn.com",
-        subject: `AI Assessment Lead: ${formData.companyName} - ${formData.name} [${riskScore} risk, $${roi.recovery.toLocaleString()} ROI]`,
+        subject: `AI Assessment Lead: ${formData.companyName} - ${formData.firstName} ${formData.lastName} [${riskScore} risk, $${roi.recovery.toLocaleString()} ROI]`,
         body: emailBody,
       });
 
       // Send to lead
       const leadEmailBody = `
-Hello ${formData.name.split(' ')[0]},
+Hello ${formData.firstName},
 
 Thank you for completing the Alicorn AI Readiness Assessment.
 
@@ -226,7 +224,7 @@ Alicorn AI Team
 
   const canContinue = () => {
     if (currentStep === 1) {
-      return formData.name && formData.companyName && formData.role && formData.revenue && formData.employees && formData.industry && formData.primaryConcerns.length > 0;
+      return formData.companyName && formData.role && formData.revenue && formData.employees && formData.industry && formData.primaryConcerns.length > 0;
     }
     if (currentStep === 2) {
       return formData.aiUsage && formData.aiApproval && formData.aiLogging && formData.dataType;
@@ -409,15 +407,6 @@ Alicorn AI Team
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold text-[#0B0B0B] mb-6">About Your Organization</h2>
                 
-                <div>
-                  <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Your Name</label>
-                  <Input
-                    value={formData.name}
-                    onChange={(e) => updateField("name", e.target.value)}
-                    className="h-12"
-                  />
-                </div>
-
                 <div>
                   <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Company Name</label>
                   <Input
@@ -792,6 +781,27 @@ Alicorn AI Team
                 </div>
 
                 <form onSubmit={handleSubmitLead} className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">First Name</label>
+                      <Input
+                        required
+                        value={formData.firstName}
+                        onChange={(e) => updateField("firstName", e.target.value)}
+                        className="h-12"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Last Name</label>
+                      <Input
+                        required
+                        value={formData.lastName}
+                        onChange={(e) => updateField("lastName", e.target.value)}
+                        className="h-12"
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-sm font-medium text-[#0B0B0B]/70 mb-2">Work Email</label>
                     <Input
