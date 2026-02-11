@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Calculator, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import { createPageUrl } from "../utils";
 
 export default function ROISection() {
 
@@ -27,13 +25,13 @@ export default function ROISection() {
             Take our quick assessment to estimate your organization's AI risk exposure, governance maturity, and potential productivity ROI.
           </p>
 
-          <Link
-            to={createPageUrl("PrivateAiRoiAssessment")}
+          <a
+            href="https://www.alicornai.com/PrivateAiRoiAssessment"
             className="mt-8 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#4B9CD3] text-white font-semibold text-[15px] rounded-full hover:bg-[#3a8bc2] transition-all hover:shadow-lg hover:shadow-[#4B9CD3]/20 group"
           >
             Calculate Your ROI
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>
