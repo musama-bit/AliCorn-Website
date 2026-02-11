@@ -347,13 +347,15 @@ Alicorn AI Team
 
             {/* Final CTAs */}
             <div className="text-center space-y-4">
-              <button
-                onClick={() => window.location.href = "/#contact"}
+              <a
+                href="https://calendar.google.com/appointments/schedules/AcZssZ3azD2ZwRDM6gh-Ly3_dCKUTVcphEdJF9v_0BjE-2K2cj3Y-hRabZwE0hkbStlRSZaz9n3y2GZh"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-[#4B9CD3] text-white font-bold text-lg rounded-lg hover:bg-[#3a8bc2] transition-all hover:shadow-xl hover:shadow-[#4B9CD3]/20"
               >
                 Schedule a 20-Minute Strategy Call
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
               <p className="text-sm text-[#0B0B0B]/50">
                 No obligation. We'll quickly tell you if this isn't a fit.
               </p>
