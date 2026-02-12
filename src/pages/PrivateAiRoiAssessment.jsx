@@ -387,6 +387,12 @@ Alicorn AI Team
                   </p>
                 </div>
               )}
+              
+              <div className="mt-6 pt-6 border-t border-[#0B0B0B]/10">
+                <p className="text-sm text-[#0B0B0B]/50 italic">
+                  Note: This summary includes AI-generated insights based on your assessment responses. We recommend booking a strategy call to clarify any assumptions and discuss your specific situation in detail.
+                </p>
+              </div>
             </div>
 
             {/* Final CTAs */}
