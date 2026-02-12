@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, CheckCircle2, AlertTriangle, Shield, TrendingUp, FileCheck, Home } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle2, AlertTriangle, Shield, TrendingUp, FileCheck, Home, Loader2, Brain } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,6 +18,7 @@ export default function PrivateAiRoiAssessment() {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [aiSummary, setAiSummary] = useState("");
 
   const [formData, setFormData] = useState({
@@ -111,6 +112,8 @@ export default function PrivateAiRoiAssessment() {
   const handleSubmitLead = async (e) => {
     e.preventDefault();
     
+    setIsAnalyzing(true);
+    
     const riskScore = calculateRiskScore();
     const governanceScore = calculateGovernanceScore();
     const roi = calculateROI();
@@ -151,6 +154,7 @@ export default function PrivateAiRoiAssessment() {
     }
     
     // Show results immediately
+    setIsAnalyzing(false);
     setSubmitted(true);
     
     // Send emails in background
@@ -275,6 +279,28 @@ Alicorn AI Team
     }
     return true;
   };
+
+  if (isAnalyzing) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center"
+        >
+          <div className="w-20 h-20 rounded-full bg-[#4B9CD3]/10 flex items-center justify-center mx-auto mb-6">
+            <Brain className="w-10 h-10 text-[#4B9CD3] animate-pulse" />
+          </div>
+          <h2 className="text-2xl font-bold text-[#0B0B0B] mb-3">Analyzing Your Assessment</h2>
+          <p className="text-[#0B0B0B]/60 mb-8">Generating your personalized insights...</p>
+          <div className="flex items-center justify-center gap-2">
+            <Loader2 className="w-5 h-5 text-[#4B9CD3] animate-spin" />
+            <span className="text-sm text-[#0B0B0B]/50">This will take just a few seconds</span>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   if (submitted) {
     const riskScore = calculateRiskScore();
