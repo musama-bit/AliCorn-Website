@@ -18,6 +18,7 @@ export default function PrivateAiRoiAssessment() {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [aiSummary, setAiSummary] = useState("");
 
   const [formData, setFormData] = useState({
     // Step 1
@@ -113,6 +114,41 @@ export default function PrivateAiRoiAssessment() {
     const riskScore = calculateRiskScore();
     const governanceScore = calculateGovernanceScore();
     const roi = calculateROI();
+    
+    // Generate AI summary (without PII)
+    try {
+      const summaryResponse = await base44.functions.invoke('generateRoiSummary', {
+        companyName: formData.companyName,
+        role: formData.role,
+        revenue: formData.revenue,
+        employees: formData.employees,
+        industry: formData.industry,
+        primaryConcerns: formData.primaryConcerns,
+        aiUsage: formData.aiUsage,
+        aiApproval: formData.aiApproval,
+        aiLogging: formData.aiLogging,
+        dataType: formData.dataType,
+        sopReliance: formData.sopReliance,
+        aiPilots: formData.aiPilots,
+        hasPolicy: formData.hasPolicy,
+        hasOwner: formData.hasOwner,
+        budgetCentralized: formData.budgetCentralized,
+        executivePressure: formData.executivePressure,
+        riskScore: riskScore,
+        governanceScore: governanceScore,
+        annualLoss: roi.annualLoss,
+        estimatedRecovery: roi.recovery,
+        knowledgeWorkers: formData.knowledgeWorkers,
+        hourlyRate: formData.hourlyRate,
+        searchMinutes: formData.searchMinutes
+      });
+      
+      setAiSummary(summaryResponse.data.summary);
+    } catch (error) {
+      console.error("AI summary generation failed:", error);
+      // Fallback to default messaging
+      setAiSummary(null);
+    }
     
     // Show results immediately
     setSubmitted(true);
@@ -328,23 +364,29 @@ Alicorn AI Team
             {/* Personalized Summary */}
             <div className="p-8 bg-white border-2 border-[#0B0B0B]/10 rounded-2xl mb-12">
               <h2 className="text-2xl font-bold text-[#0B0B0B] mb-6">What This Means</h2>
-              <div className="space-y-4 text-[#0B0B0B]/70 leading-relaxed">
-                {riskScore > 60 && (
-                  <p>Your organization shows elevated AI exposure risk. Employees are likely using AI without structured oversight. This creates compliance, data, and reputational risk.</p>
-                )}
-                {riskScore > 30 && riskScore <= 60 && (
-                  <p>Your organization has moderate AI risk exposure. Some governance gaps exist that should be addressed before they escalate.</p>
-                )}
-                {roi.recovery > 100000 && (
-                  <p>Your organization may be leaving significant efficiency gains unrealized due to fragmented knowledge access and unstructured AI adoption.</p>
-                )}
-                {governanceScore < 40 && (
-                  <p>AI adoption without ownership and policy often stalls or becomes reactive. Establishing clear governance now prevents future bottlenecks.</p>
-                )}
-                <p className="font-medium text-[#0B0B0B] pt-4">
-                  Organizations in your range typically explore a governed private AI workspace to reduce shadow AI risk and recover productivity while maintaining control.
-                </p>
-              </div>
+              {aiSummary ? (
+                <div className="space-y-4 text-[#0B0B0B]/70 leading-relaxed whitespace-pre-line">
+                  {aiSummary}
+                </div>
+              ) : (
+                <div className="space-y-4 text-[#0B0B0B]/70 leading-relaxed">
+                  {riskScore > 60 && (
+                    <p>Your organization shows elevated AI exposure risk. Employees are likely using AI without structured oversight. This creates compliance, data, and reputational risk.</p>
+                  )}
+                  {riskScore > 30 && riskScore <= 60 && (
+                    <p>Your organization has moderate AI risk exposure. Some governance gaps exist that should be addressed before they escalate.</p>
+                  )}
+                  {roi.recovery > 100000 && (
+                    <p>Your organization may be leaving significant efficiency gains unrealized due to fragmented knowledge access and unstructured AI adoption.</p>
+                  )}
+                  {governanceScore < 40 && (
+                    <p>AI adoption without ownership and policy often stalls or becomes reactive. Establishing clear governance now prevents future bottlenecks.</p>
+                  )}
+                  <p className="font-medium text-[#0B0B0B] pt-4">
+                    Organizations in your range typically explore a governed private AI workspace to reduce shadow AI risk and recover productivity while maintaining control.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Final CTAs */}
