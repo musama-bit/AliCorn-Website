@@ -288,9 +288,24 @@ Alicorn AI Team
           animate={{ opacity: 1, scale: 1 }}
           className="text-center"
         >
-          <div className="w-20 h-20 rounded-full bg-[#4B9CD3]/10 flex items-center justify-center mx-auto mb-6">
-            <Brain className="w-10 h-10 text-[#4B9CD3] animate-pulse" />
-          </div>
+          <motion.div
+            animate={{ 
+              scale: [1, 1.05, 1],
+              rotate: [0, 5, -5, 0]
+            }}
+            transition={{ 
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="mx-auto mb-6"
+          >
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6987bf0f7f2976d049a2adb1/761c01319_ChatGPTImageFeb11202610_51_54AM.png"
+              alt="Alicorn AI"
+              className="w-32 h-32 mx-auto"
+            />
+          </motion.div>
           <h2 className="text-2xl font-bold text-[#0B0B0B] mb-3">Analyzing Your Assessment</h2>
           <p className="text-[#0B0B0B]/60 mb-8">Generating your personalized insights...</p>
           <div className="flex items-center justify-center gap-2">
