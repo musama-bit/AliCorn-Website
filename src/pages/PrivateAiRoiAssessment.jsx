@@ -332,8 +332,12 @@ Alicorn AI Team
           >
             {/* Header */}
             <div className="text-center mb-16">
-              <div className="w-16 h-16 rounded-full bg-[#4B9CD3]/10 flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="w-8 h-8 text-[#4B9CD3]" />
+              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <img 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6987bf0f7f2976d049a2adb1/761c01319_ChatGPTImageFeb11202610_51_54AM.png"
+                  alt="Alicorn AI"
+                  className="w-20 h-20"
+                />
               </div>
               <h1 className="text-4xl font-bold text-[#0B0B0B] mb-4">Your Assessment Results</h1>
               <p className="text-lg text-[#0B0B0B]/60">A detailed report has been sent to {formData.leadEmail}</p>
