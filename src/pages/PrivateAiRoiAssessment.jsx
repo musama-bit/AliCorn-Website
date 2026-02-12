@@ -100,7 +100,7 @@ export default function PrivateAiRoiAssessment() {
     
     const dailyLoss = workers * (minutes / 60) * rate;
     const annualLoss = dailyLoss * 220;
-    const recovery = annualLoss * 0.15;
+    const recovery = annualLoss * 0.30;
     
     return {
       annualLoss: Math.round(annualLoss),
