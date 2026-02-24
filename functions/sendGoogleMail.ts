@@ -3,14 +3,6 @@ import nodemailer from 'npm:nodemailer@6.9.8';
 
 Deno.serve(async (req) => {
     try {
-        const base44 = createClientFromRequest(req);
-        
-        // Authenticate user
-        const user = await base44.auth.me();
-        if (!user) {
-            return Response.json({ error: 'Unauthorized' }, { status: 401 });
-        }
-
         // Parse request payload
         const { to, subject, body, from_name } = await req.json();
 
