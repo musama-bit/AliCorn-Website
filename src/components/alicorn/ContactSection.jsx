@@ -52,7 +52,7 @@ ${form.message}
 Submitted: ${new Date().toISOString()}
       `;
 
-      await base44.integrations.Core.SendEmail({
+      await base44.functions.invoke('sendGoogleMail', {
         to: "info@theproductunicorn.com",
         subject: `Alicorn AI Contact: ${form.company} - ${form.name}`,
         body: emailBody,
