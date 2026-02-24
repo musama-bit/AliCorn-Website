@@ -213,7 +213,7 @@ Submitted: ${new Date().toISOString()}
       `;
 
       // Send to sales team
-      await base44.functions.invoke('sendGoogleMail', {
+      await base44.integrations.Core.SendEmail({
         to: "info@theproductunicorn.com",
         subject: `AI Assessment Lead: ${formData.companyName} - ${formData.firstName} ${formData.lastName} [${riskScore} risk, $${roi.recovery.toLocaleString()} ROI]`,
         body: emailBody,
@@ -250,7 +250,7 @@ Best regards,
 Alicorn AI Team
       `;
 
-      await base44.functions.invoke('sendGoogleMail', {
+      await base44.integrations.Core.SendEmail({
         to: formData.leadEmail,
         subject: `Your Alicorn AI Readiness Report`,
         body: leadEmailBody,
