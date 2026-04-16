@@ -1222,8 +1222,8 @@
                     <span class="hero-badge-dot"></span>
                     Now accepting beta applications
                 </div>
-                <h1>Your Brand.<br><span class="highlight">Amplified by AI.</span></h1>
-                <p class="subtitle">Turn your brand assets into a week of consistent, on-brand content in minutes. AI-powered images, videos, and captions, all aligned to your voice, aesthetic, and goals.</p>
+                <h1>Your Brand.<br><span class="highlight">Amplified.</span></h1>
+                <p class="subtitle">Turn your brand assets into weeks of consistent, on-brand content in minutes. AI-powered images, videos, and captions, all aligned to your voice, aesthetic, and goals.</p>
                 <div class="hero-actions">
                     <a href="#waitlist" class="btn btn-primary">
                         Join the Beta Waitlist
@@ -1313,7 +1313,7 @@
                 <div class="proof-stat-label">of marketers plan to consolidate tools</div>
             </div>
             <div class="proof-stat fade-up stagger-2">
-                <div class="proof-stat-value">$400+</div>
+                <div class="proof-stat-value" data-count="400" data-prefix="$" data-suffix="+">$0+</div>
                 <div class="proof-stat-label">per seat/month for legacy tools</div>
             </div>
             <div class="proof-stat fade-up stagger-3">
@@ -1321,7 +1321,7 @@
                 <div class="proof-stat-label">struggle with AI brand voice</div>
             </div>
             <div class="proof-stat fade-up stagger-4">
-                <div class="proof-stat-value">5+</div>
+                <div class="proof-stat-value" data-count="5" data-suffix="+">0+</div>
                 <div class="proof-stat-label">tools to manage one brand</div>
             </div>
         </div>
@@ -1658,25 +1658,43 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.fade-up, .slide-left, .slide-right, .scale-up').forEach(el => observer.observe(el));
 
-    // Animated counter for proof stats
+    // Animated ticker counter for proof stats
+    function animateCounter(el) {
+        const target = parseInt(el.dataset.count);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        if (!target) return;
+
+        const duration = 1600;
+        const startTime = performance.now();
+
+        function easeOutExpo(t) {
+            return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        }
+
+        function tick(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutExpo(progress);
+            const current = Math.round(eased * target);
+
+            el.textContent = prefix + current + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(tick);
+            } else {
+                el.textContent = prefix + target + suffix;
+            }
+        }
+
+        requestAnimationFrame(tick);
+    }
+
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.dataset.count);
-                const suffix = el.dataset.suffix || '';
-                if (!target) return;
-                let current = 0;
-                const step = Math.max(1, Math.floor(target / 40));
-                const interval = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(interval);
-                    }
-                    el.textContent = current + suffix;
-                }, 25);
-                counterObserver.unobserve(el);
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
