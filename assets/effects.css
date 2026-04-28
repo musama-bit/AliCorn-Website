@@ -1,0 +1,155 @@
+/* ====================================================
+   ALICORN AI — VISUAL EFFECTS & INTERACTIONS
+   Keeps existing color scheme: Navy + Carolina Blue
+==================================================== */
+
+/* ========== 1. SCROLL PROGRESS BAR ========== */
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    z-index: 10001;
+    background: linear-gradient(90deg, #4B9CD3, #7DB8E0, #4B9CD3);
+    background-size: 200% 100%;
+    animation: progressShimmer 2.5s linear infinite;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 0 10px rgba(75, 156, 211, 0.7), 0 0 4px rgba(75, 156, 211, 0.4);
+    pointer-events: none;
+}
+@keyframes progressShimmer {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* ========== 2. GLOWING ANIMATED CTA BUTTONS ========== */
+.btn-primary {
+    animation: btnGlowPulse 3s ease-in-out infinite;
+    position: relative;
+}
+/* Outer glow ring that pulses */
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(75,156,211,0.6), rgba(125,184,224,0.4), rgba(75,156,211,0.6));
+    background-size: 300% 300%;
+    z-index: -1;
+    opacity: 0;
+    animation: btnRingPulse 3s ease-in-out infinite, gradientRotate 4s linear infinite;
+    filter: blur(6px);
+}
+.btn-primary:hover::before {
+    opacity: 1;
+}
+@keyframes btnGlowPulse {
+    0%, 100% {
+        box-shadow: 0 4px 16px rgba(75,156,211,0.3), 0 1px 0 rgba(255,255,255,0.15) inset;
+    }
+    50% {
+        box-shadow: 0 4px 28px rgba(75,156,211,0.6), 0 0 40px rgba(75,156,211,0.2), 0 1px 0 rgba(255,255,255,0.2) inset;
+    }
+}
+@keyframes btnRingPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+}
+@keyframes gradientRotate {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ========== 3. CARD SHIMMER SWEEP ON HOVER ========== */
+/* Works on pillar cards and pricing card */
+.pillar-card,
+.pricing-card,
+.step-card {
+    overflow: hidden;
+}
+
+/* Shimmer layer — sweeps left to right on hover */
+.pillar-card::after,
+.pricing-card::after,
+.compare-col::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.07) 50%,
+        transparent 60%
+    );
+    transform: skewX(-15deg);
+    pointer-events: none;
+    transition: left 0s;
+}
+.pillar-card:hover::after,
+.pricing-card:hover::after,
+.compare-col:hover::after {
+    left: 140%;
+    transition: left 0.65s ease;
+}
+
+/* ========== 4. TYPEWRITER CURSOR ========== */
+.typewriter-cursor {
+    display: inline-block;
+    width: 4px;
+    height: 0.85em;
+    background: linear-gradient(180deg, #7DB8E0, #4B9CD3);
+    margin-left: 5px;
+    border-radius: 2px;
+    vertical-align: middle;
+    animation: cursorBlink 0.8s step-end infinite;
+    box-shadow: 0 0 8px rgba(75,156,211,0.8);
+}
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* ========== 5. PARALLAX FLOATING BADGES ========== */
+/* Smoothen the float animation slightly so parallax layering looks better */
+.mockup-float {
+    will-change: transform;
+}
+
+/* ========== BONUS: NAV LINK HOVER GLOW ========== */
+.nav-links a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #4B9CD3, #7DB8E0);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+    margin-top: 2px;
+    box-shadow: 0 0 6px rgba(75,156,211,0.6);
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ========== BONUS: STEP NUMBER GLOW ========== */
+.step-number {
+    background: linear-gradient(135deg, #E8F2FA, #4B9CD3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 12px rgba(75,156,211,0.3));
+}
+
+/* ========== BONUS: HERO BADGE SHIMMER ========== */
+.hero-badge {
+    animation: badgeShimmer 4s ease-in-out infinite;
+}
+@keyframes badgeShimmer {
+    0%, 100% { box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 4px 12px rgba(0,0,0,0.1); }
+    50%       { box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset, 0 4px 20px rgba(75,156,211,0.2), 0 0 30px rgba(75,156,211,0.08); }
+}

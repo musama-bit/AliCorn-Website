@@ -1173,9 +1173,177 @@
             0% { opacity: 0; transform: scale(0.85); }
             100% { opacity: 1; transform: scale(1); }
         }
+        /* ========== AUTH MODAL ========== */
+        .auth-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .auth-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .auth-modal-backdrop {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(11, 26, 51, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .auth-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(40px) saturate(1.4);
+            -webkit-backdrop-filter: blur(40px) saturate(1.4);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 16px 48px rgba(0,0,0,0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .auth-modal-content {
+                max-width: 90vw;
+                padding: 24px;
+                margin: 20px;
+                border-radius: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .auth-modal-content {
+                max-width: 95vw;
+                padding: 20px;
+                margin: 10px;
+            }
+        }
+        .auth-modal.active .auth-modal-content {
+            transform: translateY(0);
+        }
+        .auth-modal-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .auth-modal-close:hover { background: rgba(255,255,255,0.2); }
+
+        .success-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(11, 26, 51, 0.75);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .success-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .success-modal-content {
+            width: 100%;
+            max-width: 420px;
+            padding: 28px 28px 22px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(32px);
+        }
+        .success-modal-content h3 {
+            margin-bottom: 12px;
+            font-size: 1.45rem;
+            line-height: 1.2;
+        }
+        .success-modal-content p {
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.92);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .success-modal-content button {
+            margin-top: 8px;
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, rgba(75, 156, 211, 0.95), rgba(58, 124, 181, 1));
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .success-modal-content button:hover {
+            transform: translateY(-1px);
+        }
+
+        .auth-modal-header { text-align: center; margin-bottom: 24px; }
+        .auth-modal-header h3 { color: white; margin-bottom: 8px; font-size: 1.8rem; }
+        @media (max-width: 480px) {
+            .auth-modal-header h3 {
+                font-size: 1.5rem;
+            }
+        }
+        .auth-modal-header p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+        .auth-form .form-group { margin-bottom: 16px; text-align: left; }
+        .auth-form .form-label {
+            display: block; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 8px; font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .auth-form .form-input {
+            width: 100%; padding: 14px 18px; border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05);
+            color: white; font-size: 0.95rem; outline: none; transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        @media (max-width: 480px) {
+            .auth-form .form-input {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+        }
+        .auth-form .form-input:focus {
+            border-color: rgba(75, 156, 211, 0.5); background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 0 3px rgba(75, 156, 211, 0.12);
+        }
+        .auth-modal-footer {
+            margin-top: 24px; text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.6);
+        }
+        .auth-toggle-btn {
+            background: none; border: none; color: var(--carolina-blue-light);
+            font-family: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-left: 6px;
+        }
+        .auth-toggle-btn:hover { color: white; text-decoration: underline; }
     </style>
+    <link rel="stylesheet" href="/assets/effects.css">
 </head>
 <body>
+
+<!-- Scroll Progress Bar -->
+<div id="scrollProgress"></div>
 
 <!-- ==================== NAV ==================== -->
 <nav class="nav" id="nav">
@@ -1190,8 +1358,20 @@
             <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#pricing">Pricing</a></li>
         </ul>
-        <div class="nav-cta">
-            <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+        <div class="nav-cta" style="display: flex; gap: 12px; align-items: center;">
+            <!-- Authenticated user section -->
+            <div id="userSection" style="display: none; align-items: center; gap: 12px;">
+                <span id="userName" style="color: rgba(255,255,255,0.9); font-size: 0.9rem; font-weight: 500;"></span>
+                <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.8rem;" onclick="handleBuildProfile()">Build Profile</button>
+                <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.8rem;" onclick="handleGenerateCampaign()">Generate Campaign</button>
+                <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.8rem;" onclick="handleSignOut()">Sign Out</button>
+            </div>
+            <!-- Unauthenticated section -->
+            <div id="authSection" style="display: flex; gap: 12px; align-items: center;">
+                <button class="btn btn-outline" style="padding: 10px 16px; font-size: 0.9rem; border: none; box-shadow: none; background: transparent;" onclick="openAuthModal('signin')">Sign In</button>
+                <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;" onclick="handleBuildProfile()">Build Profile</button>
+                <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.8rem;" onclick="handleGenerateCampaign()">Generate Campaign</button>
+            </div>
         </div>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -1211,14 +1391,14 @@
                     <span class="hero-badge-dot"></span>
                     Now accepting beta applications
                 </div>
-                <h1>Your Brand.<br><span class="highlight">Amplified.</span></h1>
+                <h1>Your Brand.<br><span class="highlight" id="typewriterText">Amplified.</span><span class="typewriter-cursor"></span></h1>
                 <p class="subtitle">Turn your brand assets into weeks of consistent, on-brand content in minutes. AI-powered images, videos, and captions, all aligned to your voice, aesthetic, and goals.</p>
                 <div class="hero-actions">
-                    <a href="#waitlist" class="btn btn-primary">
-                        Join the Beta Waitlist
+                    <button class="btn btn-primary" onclick="handleBuildProfile()">
+                        Build the Profile
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
+                    </button>
+                    <button class="btn btn-outline" onclick="handleGenerateCampaign()">Generate Campaign</button>
                 </div>
             </div>
             <div class="hero-visual">
@@ -1575,23 +1755,32 @@
                     Priority access to new features
                 </li>
             </ul>
-            <a href="#waitlist" class="btn btn-primary">Join the Beta Waitlist</a>
+            <button class="btn btn-primary" onclick="handleBuildProfile()">
+                Build the Profile
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <button class="btn btn-outline" onclick="handleGenerateCampaign()" style="margin-left: 16px;">
+                Generate Campaign
+            </button>
         </div>
     </div>
 </section>
 
-<!-- ==================== CTA / WAITLIST ==================== -->
-<section class="cta section-pad" id="waitlist">
+<!-- ==================== CTA ==================== -->
+<section class="cta section-pad" id="cta">
     <div class="container">
         <div class="cta-inner fade-up">
-            <span class="overline" style="color: var(--carolina-blue-light); display: block; margin-bottom: 12px;">Get Early Access</span>
+            <span class="overline" style="color: var(--carolina-blue-light); display: block; margin-bottom: 12px;">Get Started Today</span>
             <h2>Stop managing tools.<br>Start amplifying your brand.</h2>
-            <p class="subtitle">Join the waitlist to get founding member pricing and first access when we launch. Limited spots.</p>
-            <form class="waitlist-form" id="waitlistForm">
-                <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="Enter your email address" required aria-label="Email address">
-                <button type="submit" class="btn btn-primary" id="waitlistBtn">Join Waitlist</button>
-            </form>
-            <p class="waitlist-note" id="waitlistNote">No spam. No commitments. Just early access when we're ready.</p>
+            <p class="subtitle" style="color: rgba(255,255,255,0.7); margin: 0 auto 40px;">Sign in to create your first AI Marketing Agent in minutes. No design skills needed.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="handleBuildProfile()" style="padding: 18px 40px; font-size: 1.05rem;">
+                    Build the Profile
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn btn-outline" onclick="handleGenerateCampaign()" style="padding: 18px 40px; font-size: 1.05rem;">Generate Campaign</button>
+            </div>
+            <p style="margin-top: 16px; font-size: 0.8rem; color: rgba(255,255,255,0.35);">Already have an account? <button onclick="openAuthModal('signin')" style="background:none;border:none;color:var(--carolina-blue-light);cursor:pointer;font-size:0.8rem;font-weight:600;">Sign in here</button></p>
         </div>
     </div>
 </section>
@@ -1725,5 +1914,142 @@
     });
 </script>
 
+<!-- ==================== AUTH MODAL ==================== -->
+<div id="authModal" class="auth-modal">
+    <div class="auth-modal-backdrop" onclick="closeAuthModal()"></div>
+    <div class="auth-modal-content">
+        <button class="auth-modal-close" onclick="closeAuthModal()">&times;</button>
+        <div class="auth-modal-header">
+            <h3 id="authModalTitle">Sign In</h3>
+            <p id="authModalSubtitle">Welcome back to Alicorn AI</p>
+        </div>
+        <form id="authForm" class="auth-form">
+            <div class="form-group" id="nameGroup" style="display: none;">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="authName" class="form-input" placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" id="authEmail" class="form-input" placeholder="jane@company.com" required>
+            </div>
+            <div class="form-group" id="passwordGroup">
+                <label class="form-label" style="display:flex; justify-content:space-between; align-items:center;">
+                    Password
+                    <button type="button" id="forgotPasswordLink" onclick="goToForgotPassword()" style="background:none;border:none;color:var(--carolina-blue-light);font-size:0.8rem;cursor:pointer;font-weight:500;padding:0;">Forgot password?</button>
+                </label>
+                <input type="password" id="authPassword" class="form-input" placeholder="••••••••" required>
+            </div>
+            <div class="form-group" id="confirmPasswordGroup" style="display:none;">
+                <label class="form-label">Confirm New Password</label>
+                <input type="password" id="authConfirmPassword" class="form-input" placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;" id="authSubmitBtn">Sign In</button>
+        </form>
+        <div style="margin-top: 16px; text-align: center; font-size: 0.9rem; min-height: 20px;" id="authFormStatus"></div>
+        <div class="auth-modal-footer" id="authModalFooter">
+            <span id="authToggleText">Don't have an account?</span>
+            <button type="button" class="auth-toggle-btn" onclick="toggleAuthMode()" id="authToggleBtn">Sign Up</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== PROFILE MODAL ==================== -->
+<div id="profileModal" class="auth-modal">
+    <div class="auth-modal-backdrop" onclick="closeProfileModal()"></div>
+    <div class="auth-modal-content">
+        <button class="auth-modal-close" onclick="closeProfileModal()">&times;</button>
+        <div class="auth-modal-header">
+            <h3>Build Your Profile</h3>
+            <p>Fill in your brand details to get started</p>
+        </div>
+        <form id="profileForm" class="auth-form">
+            <div class="form-group">
+                <label class="form-label">Company Name</label>
+                <input type="text" id="companyName" class="form-input" placeholder="Your Company Name" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Brand Name</label>
+                <input type="text" id="brandName" class="form-input" placeholder="Your Brand Name" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Brand Overview</label>
+                <textarea id="brandOverview" class="form-input" placeholder="Describe your brand..." rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Unique Value Proposition</label>
+                <textarea id="uniqueValueProposition" class="form-input" placeholder="What makes you unique..." rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Social Platforms</label>
+                <input type="text" id="socialPlatforms" class="form-input" placeholder="e.g. Instagram, LinkedIn, Twitter" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Product Category</label>
+                <select id="productCategory" class="form-input" required>
+                    <option value="">Select Category</option>
+                    <option value="Product">Product</option>
+                    <option value="Service">Service</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;" id="profileSubmitBtn">Save Profile</button>
+        </form>
+        <div style="margin-top: 16px; text-align: center; font-size: 0.9rem; min-height: 20px;" id="profileFormStatus"></div>
+    </div>
+</div>
+
+<!-- ==================== CAMPAIGN MODAL ==================== -->
+<div id="campaignModal" class="auth-modal">
+    <div class="auth-modal-backdrop" onclick="closeCampaignModal()"></div>
+    <div class="auth-modal-content">
+        <button class="auth-modal-close" onclick="closeCampaignModal()">&times;</button>
+        <div class="auth-modal-header">
+            <h3>Generate Campaign</h3>
+            <p>Create your marketing campaign</p>
+        </div>
+        <form id="campaignForm" class="auth-form">
+            <div class="form-group">
+                <label class="form-label">Ideal Customer Profile</label>
+                <textarea id="idealCustomerProfile" class="form-input" placeholder="Describe your ideal customer..." rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Content Pillars</label>
+                <textarea id="contentPillars" class="form-input" placeholder="Key content themes..." rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Brand Tone</label>
+                <input type="text" id="brandTone" class="form-input" placeholder="e.g. Professional, Friendly, Bold" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Post Frequency per Week</label>
+                <input type="number" id="postFrequency" class="form-input" placeholder="e.g. 5" min="1" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Campaign Idea</label>
+                <textarea id="campaignIdea" class="form-input" placeholder="Describe your campaign idea..." rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Product Image</label>
+                <input type="file" id="productImage" class="form-input" accept=".jpg,.jpeg,.png,.webp" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;" id="campaignSubmitBtn">Generate Campaign</button>
+        </form>
+        <div style="margin-top: 16px; text-align: center; font-size: 0.9rem; min-height: 20px;" id="campaignFormStatus"></div>
+    </div>
+</div>
+
+<!-- ==================== SUCCESS MESSAGE MODAL ==================== -->
+<div id="campaignSuccessModal" class="success-modal">
+    <div class="success-modal-content">
+        <h3>Thanks for your request!</h3>
+        <p>It’s currently in progress 💡<br>
+        Because it takes some time to complete, we’ll send the results directly to your email once everything is ready.<br><br>
+        We’ll be in touch soon!</p>
+        <button type="button" onclick="closeCampaignSuccessModal()">Close</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/assets/auth.js"></script>
+<script src="/assets/effects.js"></script>
 </body>
 </html>
